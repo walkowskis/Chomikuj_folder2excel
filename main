@@ -78,7 +78,10 @@ folder = len(split_address)-1
 list_clear = []
 for item in item_list:
     var = (item[:-5]).rsplit(' - ', 1)
-    list_clear.append(var)
+    if len(var) == 2:
+        list_clear.append(var)
+    else:
+        logger.warning('Nierozpoznany autor lub tytuł we wpisie: %s', var[:])
 
 logger.info('Zapisuję listę w pliku:')
 i = len(sheet['A'])
